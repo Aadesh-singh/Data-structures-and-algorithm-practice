@@ -110,10 +110,23 @@ ValidBst isBst2(BST<int>* root){
     return obj;
 }
 
+// Solution: 3 in time O(n)
+bool isBST3(BST<int>* root, int min = INT_MIN, int max = INT_MAX){
+    if(!root) return true;
+
+    if(root->data < min || root->data > max) return false;
+    
+    bool isLeftOk = isBST3(root->left, min, root->data - 1);
+    bool isRightOk = isBST3(root->right, root->data, max);
+
+    return isLeftOk && isRightOk;
+}
+
 int main(){
     BST<int>* root = takeInput();
     printLevelWise(root);
     string s = (isBst(root)) ? "True" : "false"; 
     cout<<"IS BST: "<<s<<endl;
     cout<<"IS BST2: "<<isBst2(root).isBst<<endl;
+    cout<<"IS BST3: "<<isBST3(root)<<endl;
 }
