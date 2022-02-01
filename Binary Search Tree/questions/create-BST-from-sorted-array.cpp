@@ -48,4 +48,5 @@ int main() {
     cout<<endl;
     BST<int>* root = createBst(v);
     print(root);
+    delete root;
 }
