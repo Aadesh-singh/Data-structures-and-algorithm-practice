@@ -7,6 +7,7 @@
 #include<climits>
 using namespace std;
 
+
 BST<int>* takeInput(){
     int rootData;
     cout<<"Enter the root data: ";
@@ -78,9 +79,41 @@ bool isBst(BST<int>* root){
     return ans;
 }
 
+// second solution in O(n)
+class ValidBst{
+    public:
+    int maximum;
+    int minimum;
+    bool isBst;
+};
+
+ValidBst isBst2(BST<int>* root){
+    if(!root) {
+        ValidBst obj;
+        obj.minimum = INT_MAX;
+        obj.maximum = INT_MIN;
+        obj.isBst = true;
+        return obj;
+    }
+    ValidBst left = isBst2(root->left);
+    ValidBst right = isBst2(root->right);
+
+    int minimum = min(root->data, min(left.minimum, right.minimum));
+    int maximum = max(root->data, max(left.maximum, right.maximum));
+    bool isBstFinal = (root->data > left.maximum) && (root->data < right.minimum) && left.isBst && right.isBst;
+
+    ValidBst obj;
+    obj.maximum = maximum;
+    obj.minimum = minimum;
+    obj.isBst = isBstFinal;
+
+    return obj;
+}
+
 int main(){
     BST<int>* root = takeInput();
     printLevelWise(root);
     string s = (isBst(root)) ? "True" : "false"; 
-    cout<<"IS BST: "<<s;
+    cout<<"IS BST: "<<s<<endl;
+    cout<<"IS BST2: "<<isBst2(root).isBst<<endl;
 }
