@@ -65,11 +65,11 @@ bool found(BTN<int>* root, int x){
     if(root->data == x){
         return true;
     }
-    bool ans = false;
+    
     bool leftAns = found(root->left, x);
     bool rightAns = found(root->right, x);
 
-    return (ans || leftAns || rightAns);
+    return (leftAns || rightAns);
 }
 
 //   1 2 3 4 5 6 7 -1 -1 -1 -1 8 9 -1 -1 -1 -1 -1 -1
