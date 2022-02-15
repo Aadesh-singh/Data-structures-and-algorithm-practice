@@ -27,7 +27,7 @@ class OurMap{
     public:
     OurMap(){
         count = 0;
-        numBuckets = 5
+        numBuckets = 5;
         buckets = new MapNode<V>*[numBuckets];
         for(int i=0; i<numBuckets; i++){
             buckets[i] = NULL;
@@ -35,8 +35,8 @@ class OurMap{
     }
 
     ~OurMap(){
-        for(int i=0; i< numbuckets; i++){
-            delete bucket[i];
+        for(int i=0; i< numBuckets; i++){
+            delete buckets[i];
         }
         delete [] buckets;
     }
@@ -96,6 +96,9 @@ class OurMap{
         delete [] temp;
     }
     public:
+    double getLoadFactor(){
+        return (1.0*count)/numBuckets;
+    }
     void insert(string key, V value){
         int bucketIndex = getBucketIndex(key);
         MapNode<V>* head = buckets[bucketIndex];
