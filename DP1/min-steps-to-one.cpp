@@ -9,9 +9,9 @@ int minSteps3(int* arr, int n){
         int ans1 = INT_MAX, ans2 = INT_MAX, ans3 = INT_MAX;
         if(i % 3 == 0){
             if(arr[i/3] != -1){
-                ans1 = 1 + arr[i/3];
+                ans1 = 1 + arr[i/3];   //if value pre-exist then add one to that operation
             } else {
-                ans1 = 1 + 1 + arr[i/3];
+                ans1 = 1 + 1 + arr[i/3];  //if value doest not exist add 0 to one i.e {1 + arr[i/3] --> 0}
             }
         }
         if(i % 2 == 0){
