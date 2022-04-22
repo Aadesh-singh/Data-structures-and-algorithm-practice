@@ -26,12 +26,12 @@ int knapsack_memo(int* weight, int* values, int n, int maxWeight, int* output){
     }
 
     if(weight[0] > maxWeight){
-        return knapsack(weight + 1, values + 1, n-1, maxWeight);
+        return knapsack_memo(weight + 1, values + 1, n-1, maxWeight, output);
     }
 
     // Recusive calls
-    int x = knapsack(weight + 1, values + 1, n-1, maxWeight - weight[0]) + values[0];
-    int y = knapsack(weight + 1, values + 1, n-1, maxWeight);
+    int x = knapsack_memo(weight + 1, values + 1, n-1, maxWeight - weight[0], output) + values[0];
+    int y = knapsack_memo(weight + 1, values + 1, n-1, maxWeight, output);
     output[n] = max(x, y);
     return output[n];
 }
