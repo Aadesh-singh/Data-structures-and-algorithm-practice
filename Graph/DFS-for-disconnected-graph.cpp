@@ -53,6 +53,11 @@ int main()
 
     cout<<"DFS of Disconnected Graph is: "<<endl;
     DFS(edges, n);
+
+    for(int i=0; i<n; i++){
+        delete [] edges[i];
+    }
+    delete [] edges;
     
     return 0;
 }
