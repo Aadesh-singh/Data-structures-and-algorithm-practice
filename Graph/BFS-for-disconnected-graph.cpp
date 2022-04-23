@@ -55,6 +55,10 @@ int main()
     cout<<"BFS for disconnected graph is: "<<endl;
     BFS(edges, n);
 
+    for(int i=0; i<n; i++)
+        delete [] edges[i];
+    
+    delete [] edges;
 
     return 0;
 }
