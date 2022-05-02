@@ -55,7 +55,7 @@ int main()
     int si; int ei;
     cin>>si>>ei;
 
-    cout<<"BFS Traversal: "<<endl;
+    cout<<"Path: "<<endl;
     getPath(edges, n, si, ei);
    
 
