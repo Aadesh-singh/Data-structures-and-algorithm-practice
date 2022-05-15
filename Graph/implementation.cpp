@@ -19,10 +19,10 @@ void print(int** edges, int n, int sv, bool* visited){
 
 int main()
 {
-    int n;
-    int e;
+    int n;  // vertices
+    int e;  // edges
     cin>>n>>e;
-    int** edges = new int*[n];
+    int** edges = new int*[n];      //adjacency Matrix
     for(int i=0; i<n; i++){
         edges[i] = new int[n];
         for(int j=0; j<n; j++){
@@ -37,7 +37,7 @@ int main()
         edges[s][f] = 1;
     }
 
-    bool* visited = new bool[n];
+    bool* visited = new bool[n];    //visited array
 
     for(int i=0; i<n; i++){
         visited[i] = false;
