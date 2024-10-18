@@ -16,4 +16,4 @@ const calc = (arr, ele) => {
   }
 };
 
-console.log(calc(arr, 45));
+console.log(calc(arr, 10));
